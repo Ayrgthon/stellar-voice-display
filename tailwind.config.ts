@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Futuristic color extensions
+				'neon-cyan': 'hsl(var(--neon-cyan))',
+				'neon-magenta': 'hsl(var(--neon-magenta))',
+				'electric-blue': 'hsl(var(--electric-blue))',
+				'deep-space': 'hsl(var(--deep-space))',
+				'glass-panel': 'hsl(var(--glass-panel))',
+				'energy-glow': 'hsl(var(--energy-glow))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -89,6 +96,10 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			}
 		}
 	},

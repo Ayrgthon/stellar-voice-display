@@ -2,39 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Futuristic Voice Assistant Design System
+All colors MUST be HSL for proper theme support.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Futuristic Dark Theme */
+    --background: 220 100% 2%;
+    --foreground: 200 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Holographic Panels */
+    --card: 220 100% 4%;
+    --card-foreground: 200 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 100% 3%;
+    --popover-foreground: 200 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Electric Blue Primary */
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 100% 2%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Translucent Glass */
+    --secondary: 220 50% 10%;
+    --secondary-foreground: 200 100% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Subtle Dark Elements */
+    --muted: 220 50% 8%;
+    --muted-foreground: 200 30% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Cyan Accents */
+    --accent: 180 100% 50%;
+    --accent-foreground: 220 100% 2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Magenta Destructive */
+    --destructive: 320 100% 60%;
+    --destructive-foreground: 220 100% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Subtle Borders */
+    --border: 220 50% 15%;
+    --input: 220 50% 12%;
+    --ring: 200 100% 50%;
+
+    /* Custom Futuristic Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-magenta: 320 100% 60%;
+    --electric-blue: 200 100% 50%;
+    --deep-space: 220 100% 2%;
+    --glass-panel: 220 50% 10%;
+    --energy-glow: 200 100% 70%;
+
+    /* Gradients */
+    --gradient-orb: linear-gradient(135deg, hsl(200 100% 50%), hsl(180 100% 50%), hsl(320 100% 60%));
+    --gradient-panel: linear-gradient(145deg, hsla(220 50% 10% / 0.3), hsla(220 100% 4% / 0.8));
+    --gradient-glow: radial-gradient(circle, hsl(200 100% 50% / 0.3), transparent 70%);
+
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(200 100% 50% / 0.5), 0 0 40px hsl(200 100% 50% / 0.3);
+    --shadow-panel: 0 8px 32px hsla(220 100% 2% / 0.5);
+    --shadow-orb: 0 0 60px hsl(200 100% 50% / 0.6), 0 0 100px hsl(180 100% 50% / 0.4);
 
     --radius: 0.5rem;
 
@@ -100,6 +126,88 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities */
+  .glass-panel {
+    background: var(--gradient-panel);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(200 100% 50% / 0.2);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .orb-glow {
+    box-shadow: var(--shadow-orb);
+  }
+
+  /* Animation utilities */
+  .pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .rotate-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-orb {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes sound-wave {
+    0%, 100% { 
+      transform: scaleY(1);
+      opacity: 0.6;
+    }
+    50% { 
+      transform: scaleY(1.5);
+      opacity: 1;
+    }
+  }
+
+  .wave-animation {
+    animation: sound-wave 0.8s ease-in-out infinite;
+  }
+
+  /* Custom text effects */
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .text-hologram {
+    background: linear-gradient(45deg, hsl(var(--neon-cyan)), hsl(var(--electric-blue)), hsl(var(--neon-magenta)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: hologram-shift 3s ease-in-out infinite;
+  }
+
+  @keyframes hologram-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 }
